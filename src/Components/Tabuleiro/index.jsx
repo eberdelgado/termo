@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import Linha from '../Linha'
 import tent from "../utils"
-import styles from './Game.module.css'
 import {Container,  Button} from "./styles"
 
 const Tabuleiro = () => {
@@ -18,26 +17,32 @@ const Tabuleiro = () => {
     const handleClick=(e)=>{
         e.preventDefault();
         let r=rodadas;      
-        
-        word.map((w,index)=> {
-            if(wordSelect.includes(w.letra.toLowerCase())){
-                if(wordSelect.split("")[index]===w.letra.toLowerCase()){
-                    //console.log(wordSelect.split("")[index])
-                    word[index].status=1
-                }else{
-                    word[index].status=2
-            }}else{
-                    word[index].status=3
+        try{    
+            const a=word.filter((w)=> !w.letra).length
+            if(a===0){
+                word.map((w,index)=> {
+                    if(wordSelect.includes(w.letra.toLowerCase())){
+                        if(wordSelect.split("")[index]===w.letra.toLowerCase()){
+                            //console.log(wordSelect.split("")[index])
+                            word[index].status=1
+                        }else{
+                            word[index].status=2
+                    }}else{
+                            word[index].status=3
+                        }
+                        return true;
+                    })
+                
+                r[tentativa]=word;
+                setRodadas(r)
+                if(tentativa<5)
+                    setTentativa(tentativa+1)
                 }
-        })
-        
-        r[tentativa]=word;
-        setRodadas(r)
-        if(tentativa<5)
-            setTentativa(tentativa+1)
-    }
-   
 
+        }catch{
+            console.error("Error")
+        }       
+    }
     const handleChange=(w)=>{
         setWord(w)
     }

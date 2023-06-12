@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react"
-import styles from "./Linha.module.css"
-import {Field} from "./styles"
+import {Container, Field} from "./styles"
 
 const Linha = (props) => {
     const [word,setWord] = useState(props.word)
     const [letra,setLetra]=useState("");
     const [target,setTarget] =useState(0);
-    console.log(props)
+
     useEffect(()=>{      
+        props.set(word)
         if(!props.disable){
             document.addEventListener('keydown',handleKeyDown)
         }
@@ -35,29 +35,23 @@ const Linha = (props) => {
         setLetra(event.key.toLocaleLowerCase());      
     }
    
-
-    const handleChange=(a, index)=>{
-        console.log(target)
-        let m=word;
-        m[index].letra=a;
-        props.set(word)
-    }
-
     const handleClick=(index)=>{
         setTarget(index)
     }
+    //console.log(word.map(w=> console.log(w.status)))
     return(
 
-        <div className={styles.linha}>
+        <Container>
             {word.map((w,index,)=>
-            <Field 
-                key={index} 
+            <Field
                 disable={props.disable}
+                key={index} 
+                color={w.status}
                 border={index===target && !props.disable}
                 onClick={()=>handleClick(index)}
                 >{w.letra}</Field>
             )} 
-         </div>
+         </Container>
 
     )
         

@@ -2,17 +2,18 @@ import {BrowserRouter,Routes,Route,Navigate} from 'react-router-dom'
 
 import './App.css';
 import Game from './Pages/Game/Game';
-import Home from './Pages/Home/Home';
+import { StageContextProvider } from './Context/StageContext';
 
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<Home/>}/>
-          <Route path='/game' element={<Game/>}/>
-        </Routes>
-      </BrowserRouter>
+      <StageContextProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<Game/>}/>
+          </Routes>
+        </BrowserRouter>
+      </StageContextProvider>
     </>
   );
 }

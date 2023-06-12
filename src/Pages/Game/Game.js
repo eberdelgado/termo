@@ -1,117 +1,22 @@
-import React, {useEffect, useState} from 'react'
-import Linha from '../../Components/Linha'
-import { PageBody } from '../../Components/PageBody/PageBody'
-import styles from "./Game.module.css"
-import tent from "./utils"
+import PageBody from '../../Components/PageBody'
 import Tabuleiro from '../../Components/Tabuleiro'
+import Home from '../../Components/Home'
+import {useStageContext} from "../../Hooks/useStageContext"
+
 
 const Game = () => {
-
-  return (
-    <PageBody>
-        <Tabuleiro/>      
-    </PageBody>
-  )
+    const {stage} = useStageContext();
+    console.log(stage)
+    return (
+        <PageBody>
+            {stage==="game" &&
+                <Tabuleiro/>
+            }
+            {stage === "home" && 
+                <Home/>
+            }          
+        </PageBody>
+    )
 }
-
-
-const tent2= [[{ 
-    letra:"",
-    status:0,
-},{ 
-    letra:"",
-    status:0,
-},{ 
-    letra:"",
-    status:0,
-},{ 
-    letra:"",
-    status:0,
-},{ 
-    letra:"",
-    status:0,
-}],
-[{ 
-    letra:"",
-    status:0,
-},{ 
-    letra:"",
-    status:0,
-},{ 
-    letra:"",
-    status:0,
-},{ 
-    letra:"",
-    status:0,
-},{ 
-    letra:"",
-    status:0,
-}],
-[{ 
-    letra:"",
-    status:0,
-},{ 
-    letra:"",
-    status:0,
-},{ 
-    letra:"",
-    status:0,
-},{ 
-    letra:"",
-    status:0,
-},{ 
-    letra:"",
-    status:0,
-}],
-[{ 
-    letra:"",
-    status:0,
-},{ 
-    letra:"",
-    status:0,
-},{ 
-    letra:"",
-    status:0,
-},{ 
-    letra:"",
-    status:0,
-},{ 
-    letra:"",
-    status:0,
-}],
-[{ 
-    letra:"",
-    status:0,
-},{ 
-    letra:"",
-    status:0,
-},{ 
-    letra:"",
-    status:0,
-},{ 
-    letra:"",
-    status:0,
-},{ 
-    letra:"",
-    status:0,
-}],
-[{ 
-    letra:"",
-    status:0,
-},{ 
-    letra:"",
-    status:0,
-},{ 
-    letra:"",
-    status:0,
-},{ 
-    letra:"",
-    status:0,
-},{ 
-    letra:"",
-    status:0,
-}]
-]
-
 
 export default Game
