@@ -21,11 +21,11 @@ export const Button = styled.button`
     height:5vh;
     border:solid 1px #2bc8c8ae;
     box-shadow:#2bc8c8;
+    margin-top: 4px;
     cursor:pointer;
     :active {
         opacity: 0.8;
-    }
-    
+    }   
 `
 /*{
     position: absolute;

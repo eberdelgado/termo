@@ -6,7 +6,6 @@ import {useStageContext} from "../../Hooks/useStageContext"
 
 const Game = () => {
     const {stage} = useStageContext();
-    console.log(stage)
     return (
         <PageBody>
             {stage==="game" &&

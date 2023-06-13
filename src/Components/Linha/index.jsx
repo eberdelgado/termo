@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import {Container, Field} from "./styles"
 
 const Linha = (props) => {
-    const [word,setWord] = useState(props.word)
+    const [word,setWord] = useState([...props.word])
     const [letra,setLetra]=useState("");
     const [target,setTarget] =useState(0);
 
